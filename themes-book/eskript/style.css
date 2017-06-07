@@ -1,0 +1,409 @@
+/*
+Theme Name: eskript
+Description: Style for ETH eskript platform
+Author: Stephan J. Müller
+Version: 0.1
+Template: pressbooks-book
+*/
+
+@import url("../../../pressbooks/themes-book/fitzgerald/style.css");
+
+/* begin textbook additions */
+
+h1 + p,
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+
+ol.alphalist {
+    list-style-type: lower-alpha;
+    list-style-position: inside;
+    margin-left: 25px;
+}
+
+ol.alphalist li::before {
+    content: normal;
+}
+
+.pullleft {
+    margin-right: 4%;
+}
+
+small {
+    font-size: 80%;
+}
+
+/** tight and loose tracking **/
+.tight {
+    letter-spacing: -0.25px;
+    word-spacing: -0.075em;
+}
+
+.very-tight {
+    letter-spacing: -0.5px;
+    word-spacing: -0.09em;
+}
+
+.loose {
+    letter-spacing: 0.25px;
+    word-spacing: 0.075em;
+}
+
+.very-loose {
+    letter-spacing: 0.5px;
+    word-spacing: 0.09em;
+}
+
+/****************************************
+	Cover page
+*****************************************/
+.alt-formats {
+    max-width: 350px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.book-info-container .alt-formats h4 {
+    text-align: center;
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+
+/****************************************
+	Structure
+*****************************************/
+
+#content table.bcc-shrink tr th, #content table.bcc-shrink thead th {
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+#content table.bcc-shrink tr td {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+/*************************
+	Footer
+**************************/
+p.cc-block {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #dddddd !important;
+    font-size: small;
+    line-height: 17px;
+    width: 100% !important;
+    margin: 30px auto 8px !important;
+    border-radius: 4px;
+}
+
+.screen-reader-text {
+    display: none;
+}
+
+/*******************************
+	Textbook specific styles 
+********************************/
+#content table {
+    border: 1px solid #e7e7e7;
+    margin: 0 -1px 24px 0;
+    text-align: left;
+    width: 100%;
+}
+
+#content table tr td, #content table tr th {
+    border: 1px solid #e7e7e7;
+}
+
+.entry-content{
+     overflow-wrap:break-word;
+}
+
+.bcc-box {
+    /*	width: 100%;*/
+    padding: 2% 3%;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.bcc-box h3:first-child {
+    text-align: center;
+    margin: -2% -3% 15px;
+    color: #ffffff;
+    padding: 15px 0 15px;
+}
+
+.bcc-highlight {
+    background-color: #f7f7f9;
+}
+
+.bcc-box.bcc-highlight h3 {
+    background-color: #111111;
+}
+
+.bcc-success {
+    background-color: #eaf5ea;
+}
+
+.bcc-box.bcc-success h3 {
+    background-color: #3a7a33;
+}
+
+.bcc-info {
+    background-color: #e3eff6;
+}
+
+.bcc-box.bcc-info h3 {
+    background-color: #0b6396;
+}
+
+.bcc-warning {
+    background-color: #fcf8e3;
+}
+
+.bcc-box.bcc-warning h3 {
+    background-color: #c09853;
+}
+
+span.export-file-icon {
+    width: 36px;
+    height: 36px;
+    background-size: 36px 36px;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+span.small.epub {
+    background: url(../../../pressbooks/assets/dist/images/epub-36.png) 0 0 no-repeat;
+}
+
+span.small.epub3 {
+    background: url(../../../pressbooks/assets/dist/images/epub3-36.png) 0 0 no-repeat;
+}
+
+span.small.icml {
+    background: url(../../../pressbooks/assets/dist/images/icml-36.png) 0 0 no-repeat;
+}
+
+span.small.mobi {
+    background: url(../../../pressbooks/assets/dist/images/mobi-36.png) 0 0 no-repeat;
+}
+
+span.small.pdf, span.small.mpdf {
+    background: url(../../../pressbooks/assets/dist/images/pdf-36.png) 0 0 no-repeat;
+}
+
+span.small.wxr {
+    background: url(images/wxr-36-red.png) 0 0 no-repeat;
+}
+
+span.small.vanillawxr {
+    background: url(../../../pressbooks/assets/dist/images/wxr-36.png) 0 0 no-repeat;
+}
+
+span.small.xhtml {
+    background: url(../../../pressbooks/assets/dist/images/xhtml-36.png) 0 0 no-repeat;
+}
+
+span.small.odt {
+    background: url(../../../pressbooks/assets/dist/images/odt-36.png) 0 0 no-repeat;
+}
+
+/** support divs to export content for web-only vs not-web; pdf-only vs not-pdf **/
+.not-web, .pdf-only {
+    display: none;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+.entry-content ul {
+    margin-left: 30px; }
+
+.entry-content ol{
+    margin-left:15px;
+}
+
+.entry-content ul {
+    list-style: outside disc; }
+
+ol {
+    list-style: none outside;
+    counter-reset: level1; }
+
+ol li::before {
+    content: counter(level1) ". ";
+    counter-increment: level1; }
+
+ol li ul li::before{
+    content: '';
+}
+
+ol ol {
+    list-style: none outside;
+    counter-reset: level2; }
+
+ol li li::before {
+    list-style-position: outside;
+    content: counter(level2, lower-alpha) ". ";
+    counter-increment: level2; }
+
+ol ol ol {
+    list-style: none outside;
+    counter-reset: level3; }
+
+ol li li li::before {
+    list-style-position: outside;
+    content: counter(level3, lower-roman) ". ";
+    counter-increment: level3; }
+
+/*************************
+	Media queries
+**************************/
+@media screen and (min-width: 940px) {
+    #content {
+        width: 720px;
+    }
+
+    .nav {
+        width: 900px;
+        margin-left: -450px;
+    }
+
+    #sidebar {
+        margin-right: -24px;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .alt-formats {
+        float: none;
+        margin-bottom: 2em;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 2em;
+        max-width: 80%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 780px) {
+    .alt-formats {
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 10px;
+        max-width: 75%;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .alt-formats {
+        max-width: 95%;
+    }
+}
+
+/* end textbook additions */
+
+/*************************
+	My Boxes
+**************************/
+
+.textbox {
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6,
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6,
+.tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6,
+.tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
+
+    margin-left: -15px;
+    padding-left: 15px;
+    margin-right: -15px;
+    padding-right: 15px;
+    color: #ffffff;
+}
+
+.tbformel, .tbhowto{
+    background: #fbe0b4;
+    border-color: #f1b032;
+}
+
+.tbdefinition, .tbbeispiel{
+    background: #c7e4da;
+    border-color: #4eb79e;
+}
+
+.tbfragen{
+    background: #f8c2ad;
+    border-color: #ea553c;
+}
+
+.tbexkurs, .tbverweis{
+    background: #dad8d9;
+    border-color: #a4a4a4;
+}
+
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6{
+    background: #f1b032;
+}
+
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6{
+    background: #4eb79e;
+}
+
+.tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6{
+    background: #ea553c;
+}
+
+.tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
+    background: #a4a4a4;
+}
+
+/* sjm eskript additions */
+
+ul.sections {
+	margin-bottom: 0px;
+}
+
+.pressbooks-brand {
+	display: none;
+}
+
+.book-cover {
+  margin-top: 64px;
+}
+
+#content table {
+	display: table;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: none;
+}
+
+body {
+  font-family: "Times New Roman", serif;
+}
+

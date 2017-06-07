@@ -1,0 +1,65 @@
+/*************************
+	My Boxes
+**************************/
+
+/* copies content of eskript/style.css with overrides for MCE textbox CSS */
+
+.textbox {
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    padding: 15px !important;
+}
+
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6,
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6,
+.tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6,
+.tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
+
+    margin-left: -15px !important;
+    padding-left: 15px !important;
+    margin-right: -15px !important;
+    padding-right: 15px !important;
+    color: #ffffff;
+}
+
+.tbformel, .tbhowto{
+    background: #fbe0b4 !important;
+    border-color: #f1b032 !important;
+}
+
+.tbdefinition, .tbbeispiel{
+    background: #c7e4da !important;
+    border-color: #4eb79e !important;
+}
+
+.tbfragen{
+    background: #f8c2ad !important;
+    border-color: #ea553c !important;
+}
+
+.tbexkurs, .tbverweis{
+    background: #dad8d9 !important;
+    border-color: #a4a4a4 !important;
+}
+
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6{
+    background: #f1b032 !important;
+}
+
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6{
+    background: #4eb79e !important;
+}
+
+.tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6{
+    background: #ea553c !important;
+}
+
+.tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
+    background: #a4a4a4 !important;
+}
