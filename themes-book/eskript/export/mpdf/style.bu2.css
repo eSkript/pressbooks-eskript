@@ -6,10 +6,8 @@
 
 
 body {
-	font: 12px "Crimson","Times New Roman", serif;
+	font: 10.5pt/1.4 "Crimson","Times New Roman", serif;
 	prince-hyphenate-before: 3;
-	page-break-before: avoid;
-	page-break-after: avoid;
 }
 a {
 	color: blue;
@@ -30,28 +28,8 @@ p {
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: "Roboto Condensed", sans-serif;
-	/*line-height: 1.4em;*/
+	line-height: 1.4em;
 	font-weight: normal;
-}
-h1 {
-	font-size: 1.15em;
-	margin-top: 25px;
-	margin-bottom: 10px;
-}
-h2 {
-	font-size: 1.12em;
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
-h3, h4 {
-	font-size: 1.09em;
-	margin-top: 15px;
-	margin-bottom: 10px;
-}
-h5, h6 {
-	font-size: 1.05em;
-	margin-top: 10px;
-	margin-bottom: 10px;
 }
 p + ul {
 	margin-top: 10px;
@@ -157,56 +135,25 @@ p.bl_indent {
     text-indent: -1em;
 }
 
-/* CONTENT STYLING */
-
-div.part, 
-div.front-matter, 
-div.back-matter, 
-div.chapter {
-	/*page-break-before: right;*/
-	margin-left: 40px;
-	margin-right: 40px;
-}
-
-h2.entry-title {
-    font-size: 1.6em;
-    font-style: normal;
-    font-variant: normal;
-    padding-top: 5px;
-	font-weight: normal;
-    text-align: left;
-    margin: 100px 0 80px;
-}
-
-h2.entry-title span {
-    border-bottom: 1px solid #333;
-    padding: 0 0.2em 0.3em;
-    text-align: center;
-    width: 20%;    
-	display: block;
-    margin-bottom: 1.4em;
-}
-
 
 /* HALFTITLE PAGE
 ==================== */
-/*body > h1.title:first-of-type {
-    string-set: book-title content();*/
-	/*page-break-before: right;
-    page-break-after: always;*/
-    /*bookmark-level: none;  
-    font-size: 18pt;
+body > h1.title:first-of-type {
+    string-set: book-title content();
+	page-break-before: right;
+    page-break-after: always;
+    bookmark-level: none;  
+    font-size: 12pt;
     font-style: italic;
     margin-top: 3cm;
     text-align: left;
-	font-weight: bold;
-}*/
+}
 
 /* TITLE PAGE
 ================ */
 #title-page { 
 	font-weight: normal;
-    /*page-break-before: right;*/
+    page-break-before: right;
     height: 100%;
 	text-align: left;
 }
@@ -265,9 +212,9 @@ h2.entry-title span {
 /*
 	COPYRIGHT PAGE
 ====================== */
-/*#copyright-page {
+#copyright-page {
     page-break-before: always;
-}*/
+}
 #copyright-page p {
 	font-size: 9pt;
     text-indent: 0;
@@ -288,7 +235,7 @@ h2.entry-title span {
  /* TABLE OF CONTENTS
 ======================= */
 #toc {
-	/*page-break-before: right;*/
+	page-break-before: right;
 	counter-reset: part; 
 	font-size: 9pt;
 }
@@ -468,7 +415,12 @@ h3.chapter-number,
 h3.back-matter-number {
 	bookmark-level: none;
 }
-
+div.part, 
+div.front-matter, 
+div.back-matter, 
+div.chapter {
+	page-break-before: right;
+}
 .display-none, 
 h3.front-matter-number, 
 h3.front-matter-number.dedication, 
