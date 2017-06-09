@@ -66,7 +66,12 @@ tinymce.PluginManager.add( 'pbmanagelists', function( editor ) {
         var dom = editor.dom;
 
         if(!dom.getAttrib(node, "ID")){
-            dom.setAttrib(node, "ID", Math.random().toString(36).substring(11));
+            var randId = 'y'; // Must start with non-number
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for(var i=0; i < 12; i++) {
+                randId += possible.charAt(Math.floor(Math.random() * possible.length));
+            }
+            dom.setAttrib(node, "ID", randId);
         }
 
         window.prompt("Copy to clipboard: Ctrl+C, Enter", '[ref id="'+dom.getAttrib(node, "ID")+'"/]');
