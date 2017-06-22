@@ -41,6 +41,7 @@ require_once( 'components/admin.php' );
 add_action( 'wp_loaded', 'eskript_overrides' );
 add_action( 'check_admin_referer', 'eskript_overrides' );
 function eskript_overrides() {
+	// NOTE: Might be triggered more than once.
 	do_action( 'eskript_overrides' );
 }
 
