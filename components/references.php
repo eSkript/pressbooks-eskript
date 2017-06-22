@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Use custom shortcode handler to also handle shortcodes within captions.
+ */
+add_action( 'eskript_overrides', function() {
+	add_filter( 'the_content', function( $content ) {
+		// NOTE: The ref shortcode was at one time called rev. This can be removed after all instances are replaced in the database.
+		return eskript_shortcode_handler( $content, array( 'ref', 'rev' ), 'escript_ref' );
+	}, 8 );
+} );
+
+/**
  * Reference shortcode.
  *
  * Options are documented at https://eskript.ethz.ch/lists/chapter/references/

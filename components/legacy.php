@@ -24,12 +24,6 @@ add_action( 'admin_init', function() {
 });
 
 /**
- * The ref shortcode was at one time called rev. This can be removed after
- * all instances are replaced in the database. 
- */
-add_shortcode( 'rev', 'escript_ref' );
-
-/**
  * Migrate old theme.
  *
  * Can be removed after all old books have been updated to use the new theme.

@@ -137,3 +137,28 @@ function eskript_decimalToRoman( $integer, $upcase = true ) {
 	}
 	return $upcase ? $out : strtolower( $out );
 }
+
+/**
+ * Content filter to do our own shortcode substitutions.
+ *
+ * @param string $content Input.
+ * @param string $code Shortcode name or array.
+ * @param string $handler Shortcode handler function.
+ * @return string
+ */
+function eskript_shortcode_handler( $content, $code, $handler ) {
+	// $pattern = get_shortcode_regex(array('latex', 'katex'));
+	// Hardcode pattern in case 'get_shortcode_regex' changes.
+	if ( is_array( $code ) ) {
+		$code = implode( '|', $code );
+	}
+	$pattern = '\[(\[?)(' . $code . ')(?![\w-])([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)';
+	$content = preg_replace_callback("/$pattern/", function ( $m ) use ( $handler ) {
+		$tag = $m[2];
+		$attr = shortcode_parse_atts( $m[3] );
+		$content = isset( $m[5] ) ? $m[5] : null;
+		$output = $m[1] . call_user_func( $handler, $attr, $content, $tag ) . $m[6];
+		return $output;
+	}, $content);
+	return $content;
+}

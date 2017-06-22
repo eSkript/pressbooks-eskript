@@ -34,6 +34,17 @@ require_once( 'components/user.php' );
 require_once( 'components/admin.php' );
 
 /**
+ * Trigger eskript_overrides action after all other plugins are initialized; allows to replace existing shortcodes.
+ *
+ * Also needs to be called on check_admin_referer, so it is triggered while exporting PDFs.
+ */
+add_action( 'wp_loaded', 'eskript_overrides' );
+add_action( 'check_admin_referer', 'eskript_overrides' );
+function eskript_overrides() {
+	do_action( 'eskript_overrides' );
+}
+
+/**
  * Remove references to pressbooks.com..
  */
 $GLOBALS['PB_SECRET_SAUCE']['TURN_OFF_FREEBIE_NOTICES_EPUB'] = 'not_created_on_pb_com';
