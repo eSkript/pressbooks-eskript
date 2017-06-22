@@ -274,7 +274,7 @@ ol li li li::before {
         width: 720px;
     }
 
-    .posts-navigation {
+    .nav, .posts-navigation {
         width: 900px;
         margin-left: -450px;
     }
