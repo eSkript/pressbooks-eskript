@@ -1,0 +1,7 @@
+/**
+* default mpdf scss stylesheet, can be configured on a per theme basis
+*/
+
+/* sjm: replaced 'body' to 'object' with old prince template */
+
+@import url("../../../eskript/export/mpdf/style.css");

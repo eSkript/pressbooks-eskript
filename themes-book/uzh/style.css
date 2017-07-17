@@ -1,0 +1,13 @@
+/*
+Theme Name: UZH
+Description: Style for UZH eskript platform
+Author: Stephan J. Müller, Dominic Michel
+Version: 0.1
+Template: pressbooks-book
+*/
+
+@import url("../eskript/style.css");
+
+#content {
+	background-color: #eee;
+}
