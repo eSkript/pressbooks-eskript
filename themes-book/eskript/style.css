@@ -8,6 +8,35 @@ Template: pressbooks-book
 
 @import url("../../../pressbooks/themes-book/fitzgerald/style.css");
 
+/* pressbook upgrade additions */
+
+@import url("fitzgerald.css");
+
+.part-title {
+    text-align: right
+}
+
+.entry-title span {
+    display: block;
+    margin-bottom: 1.4em;
+}
+
+.entry-title {
+    font-size: 1.6em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.wp-caption-text {
+    color: #000000;
+    font-size: 0.75em;
+    text-align: center;
+}
+
 /* begin textbook additions */
 
 h1 + p,

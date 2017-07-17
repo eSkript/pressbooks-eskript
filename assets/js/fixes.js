@@ -1,10 +1,9 @@
-const $ = jQuery;
+var $ = jQuery;
 
 /**
  * Adjust color of LaTeX formula according to the local text color.
  */
 $(document).ready(function() {
-  const blackish = ['rgb(0, 0, 0)', 'rgb(31, 31, 29)'];
   $('img.latex').each(function(i, n) {
     var style = window.getComputedStyle(n);
     var color = style.getPropertyValue('color').replace(/\s*/, '');
@@ -22,3 +21,11 @@ $(document).ready(function() {
     n.src = n.src + '&color=' + encodeURIComponent(color);
   });
 });
+
+/**
+ * Add home link to book cover page.
+ */
+$(document).ready(function() {
+  $('.log-wrap').prepend( '<a href="https://eskript.ethz.ch/">Home</a>' );
+});
+
