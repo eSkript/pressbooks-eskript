@@ -27,11 +27,12 @@ function eskript_content_filter( $content ) {
 /**
  * Add theme scripts.
  */
-add_action('wp_enqueue_scripts', function() {
-	$o = get_option( 'eskript_settings', array() );
-	if ( ! empty( $o['subchapterize'] ) ) {
-		wp_enqueue_script( 'eskript_subchapters', ESCRIPT_PLUGIN_URL . 'assets/js/subchapters.js', array( 'jquery' ) );
-	}
+add_action( 'wp_enqueue_scripts', function() {
+	// NOTE: Disabled subchapters (for now).
+	// $o = get_option( 'eskript_settings', array() );
+	// if ( ! empty( $o['subchapterize'] ) ) {
+	// 	wp_enqueue_script( 'eskript_subchapters', ESCRIPT_PLUGIN_URL . 'assets/js/subchapters.js', array( 'jquery' ) );
+	// }
 	wp_enqueue_script( 'eskript_fixes', ESCRIPT_PLUGIN_URL . 'assets/js/fixes.js', array( 'jquery' ) );
 });
 
@@ -83,6 +84,8 @@ add_action( 'admin_init', function() {
 		'eskript_settings',
 		'eskript_settings_sanitizer' // input sanitizer
 	);
+	// NOTE: Disabled subchapters (for now).
+	/***
 	add_settings_field(
 		'subchapterize',
 		__( 'Chapter Subdivision', 'ethskript' ),
@@ -96,6 +99,7 @@ add_action( 'admin_init', function() {
 		'pressbooks_theme_options_global',
 		'global_options_section'
 	);
+	***/
 }, 11);
 
 function eskript_settings_sanitizer( $in ) {
