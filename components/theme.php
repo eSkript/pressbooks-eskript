@@ -28,11 +28,14 @@ function eskript_content_filter( $content ) {
  * Add theme scripts.
  */
 add_action( 'wp_enqueue_scripts', function() {
+	$o = get_option( 'eskript_settings', array() );
 	// NOTE: Disabled subchapters (for now).
-	// $o = get_option( 'eskript_settings', array() );
 	// if ( ! empty( $o['subchapterize'] ) ) {
 	// 	wp_enqueue_script( 'eskript_subchapters', ESCRIPT_PLUGIN_URL . 'assets/js/subchapters.js', array( 'jquery' ) );
 	// }
+	if ( ! empty( $o['geogebra'] ) ) {
+		wp_enqueue_script( 'eskript_geogebra', 'https://cdn.geogebra.org/apps/deployggb.js' );
+	}
 	wp_enqueue_script( 'eskript_fixes', ESCRIPT_PLUGIN_URL . 'assets/js/fixes.js', array( 'jquery' ) );
 });
 
@@ -69,9 +72,27 @@ function eskript_option_pressbooks_theme_options_global( $value ) {
 /**
  * Shortcode to allow portable references of resources inside the upload directory. 
  */
-add_shortcode('upload_dir_url', function() {
+add_shortcode( 'upload_dir_url', function() {
 	$dir = wp_upload_dir();
 	return $dir['baseurl'];
+});
+
+/**
+ * Shortcode for including interactive GeoGebra content.
+ */
+add_shortcode( 'geogebra', function ( $atts ) {
+	$id = $atts['id'];
+	$conf = (object) $atts;
+	unset( $conf->id );
+	$json = json_encode( $conf );
+	$out = "<div id=\"$id\"></div>\n";
+	$out .= "<script>\n";
+	$out .= "window.addEventListener(\"load\", function() {\n";
+	$out .= "	let applet = new GGBApplet($json, true);\n";
+	$out .= "	applet.inject('$id');\n";
+	$out .= "});\n";
+	$out .= "</script>\n";
+	return $out;
 });
 
 /**
@@ -100,6 +121,19 @@ add_action( 'admin_init', function() {
 		'global_options_section'
 	);
 	***/
+	add_settings_field(
+		'geogebra',
+		__( 'GeoGebra', 'ethskript' ),
+		function( $args ) {
+			$o = get_option( 'eskript_settings', array() );
+			?><input id="geogebra" name="eskript_settings[geogebra]" type="checkbox" value="1"<?php echo empty( $o['geogebra'] ) ? '' : ' checked'; ?>/>
+			<input type="hidden" name="eskript_settings[booleans][]" value="geogebra">
+			<label for="geogebra"><?php echo __( 'Enable interactive GeoGebra content.', 'ethskript' ); ?></label>
+			<?php
+		},
+		'pressbooks_theme_options_global',
+		'global_options_section'
+	);
 }, 11);
 
 function eskript_settings_sanitizer( $in ) {
