@@ -7,3 +7,10 @@
 
 				</div><!-- end .third-block -->
 			</section> <!-- end .third-block -->
+
+<?php
+//make sure plugin is installed and activated
+if (function_exists('prog_cover')) {
+    prog_cover();
+}
+?>

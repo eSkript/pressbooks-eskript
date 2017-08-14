@@ -92,29 +92,19 @@ ul li li li::before {
 	font-size: 0.5em;
 	margin-right: 5px;
 }
-ol { 
-    list-style-type: none;
-     counter-reset: level1;
-}
-ol li::before {
-	content: counter(level1) ". ";
-	counter-increment: level1;
+/* ol style */
+ol {
+	list-style-type: decimal;
 }
 ol ol {
-	list-style-type: none;
-    counter-reset: level2;
-}   
-ol li li::before {
-	content: counter(level1) "." counter(level2) " ";
-	counter-increment: level2;
+	list-style-type: lower-latin;
 }
 ol ol ol {
-	list-style-type: none;
-    counter-reset: level3;
+	list-style-type: lower-roman;
 }
-ol li li li::before {
-	content: counter(level1) ". " counter(level2) ". " counter(level3) " ";
-	counter-increment: level3;
+
+ol ol ol ol {
+	list-style-type: lower-greek;
 }
 
 cite {
@@ -175,7 +165,7 @@ h2.entry-title {
     padding-top: 5px;
 	font-weight: normal;
     text-align: left;
-    margin: 100px 0 80px;
+    /*margin: 100px 0 80px;*/
 }
 
 h2.entry-title span {
@@ -185,6 +175,11 @@ h2.entry-title span {
     width: 20%;    
 	display: block;
     margin-bottom: 1.4em;
+}
+
+.entry-content {
+	width: 100%;
+	display: block;
 }
 
 
@@ -638,18 +633,27 @@ sup.endnote {
 	text-indent: 0;
 }
 .textbox {
-	border: 1px solid #000;
-	margin: 10px 0;
-	padding: 10px;
+	clear: both;
+	display:block;
+	margin: 20px 0px 20px 0px;
     page-break-inside: avoid;
+    border: 1px solid #333;
+    padding: 15px 15px 15px 15px;
+	float: left;
 	/*float: prince-top-if-necessary;*/
+}
+.textbox p {
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+
+.textbox h1 {
+    margin-top: 0px;
 }
 .textbox.shaded {
 	background-color: #eee;
 }
-.textbox p {
-	margin-top: 0;
-}
+
 .textbox-caption {
 	display: block;
 	font-size: 0.9em;
@@ -696,6 +700,24 @@ img {
     width: auto;
 	max-width: 100%;
     max-height: 11cm;
+}
+
+.aligncenter, div.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aligncenter {
+    text-align: center;
+}
+
+img {
+    background: #f5f5f5;
+    border: 1px solid #eeeeee;
+    padding: 5px;
+    height: auto;
+    max-width: 98%;
 }
 
 img.small{
@@ -916,12 +938,6 @@ span.mpdf_toc_p_level_2 {	/* Page no. level 2 - may be inside <a> */
 /*************************
 	My Boxes
 **************************/
-
-.textbox {
-    border: 1px solid #333;
-    margin-bottom: 20px;
-    padding: 15px;
-}
 
 .tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
 .tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6,
