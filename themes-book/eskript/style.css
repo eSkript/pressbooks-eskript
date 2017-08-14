@@ -53,6 +53,12 @@ img {
     max-width: 98%;
 }
 
+img.latex {
+    vertical-align: middle;
+    border: none;
+    background: none;
+}
+
 ol.alphalist {
     list-style-type: lower-alpha;
     list-style-position: inside;

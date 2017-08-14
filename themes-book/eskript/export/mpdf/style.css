@@ -695,12 +695,6 @@ sup.endnote {
 
 /* IMAGES
 ================== */
-img {
-	height: auto;
-    width: auto;
-	max-width: 100%;
-    max-height: 11cm;
-}
 
 .aligncenter, div.aligncenter {
     display: block;
@@ -713,11 +707,15 @@ img {
 }
 
 img {
-    background: #f5f5f5;
-    border: 1px solid #eeeeee;
-    padding: 5px;
-    height: auto;
-    max-width: 98%;
+	height: auto;
+    width: auto;
+	max-width: 100%;
+    max-height: 11cm;
+}
+img.latex {
+    vertical-align: middle;
+    border: none;
+    background: none;
 }
 
 img.small{
