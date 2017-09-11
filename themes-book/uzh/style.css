@@ -1,0 +1,107 @@
+/*
+Theme Name: UZH
+Description: Style for UZH eskript platform
+Author: Stephan J. Müller, Dominic Michel
+Version: 0.1
+Template: pressbooks-book
+*/
+
+@import url("../eskript/style.css");
+
+body {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  line-height: 2;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia;
+  font-weight: bold;
+}
+
+#content {
+	background-color: white;
+}
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
+}
+
+span {
+  text-align: justify;
+}
+
+a {
+  color: #41650b;
+}
+
+.entry-content {
+	text-align: justify;
+	hyphens: auto;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+}
+
+.textbox {
+    border: 2px solid #41650B;
+}
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6,
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6,
+.tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6,
+.tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6 {
+	margin-top: -15px; /* moving box titles to the top of the boxes */
+    padding-top: 8px;
+	padding-bottom: 5px;
+}
+
+.tbformel {
+    background: #F2F2F2;
+}
+
+.tbhowto {
+    background: #EDFBD9;
+}
+
+.tbdefinition, .tbbeispiel{
+    background: #EDFBD9;
+    border-color: #41650B;
+}
+
+.tbverweis {
+    background: #EDFBD9;
+}
+.tbexkurs {
+    background: #F2F2F2 ;
+}
+
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6{
+    background: #41650b;
+}
+
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6 {
+    background: #41650b;
+}
+
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6{
+    background: #41650B;
+}
+
+.tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
+    background: #41650b;
+}

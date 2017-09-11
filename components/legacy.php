@@ -9,25 +9,19 @@
  */
 
 add_action( 'admin_init', function() {
-	// List management (not really used anymore, but might still contain some dependencies).
+	// List management (mostly depricated, but still contains some dependencies).
 	add_editor_style( ESCRIPT_PLUGIN_URL . 'assets/css/pbmanagelists.css' );
-	add_filter('mce_external_plugins', function ( $plugin_array ) {
+	add_filter( 'mce_external_plugins', function ( $plugin_array ) {
 		$plugin_array['pbmanagelists'] = ESCRIPT_PLUGIN_URL . 'assets/js/pbmanagelists.js';
 		return $plugin_array;
 	});
 	// Add custom textboxes to editor.
 	add_editor_style( ESCRIPT_PLUGIN_URL . 'assets/css/editor.css' );
-	add_filter( 'mce_external_plugins', function () {
+	add_filter( 'mce_external_plugins', function ( $plugin_array ) {
 		$plugin_array['textboxes'] = ESCRIPT_PLUGIN_URL . 'assets/scripts/textboxes.js';
 		return $plugin_array;
 	}, 11 );
 });
-
-/**
- * The ref shortcode was at one time called rev. This can be removed after
- * all instances are replaced in the database. 
- */
-add_shortcode( 'rev', 'escript_ref' );
 
 /**
  * Migrate old theme.

@@ -3,6 +3,8 @@
 */
 
 /* sjm: replaced 'body' to 'object' with old prince template */
+
+
 body {
 	font: 12px "Crimson","Times New Roman", serif;
 	prince-hyphenate-before: 3;
@@ -10,7 +12,7 @@ body {
 	page-break-after: avoid;
 }
 a {
-	color: blue;
+	color: #41650b;
 	text-decoration: none;
 }
 p {
@@ -95,11 +97,9 @@ ul li li li::before {
 ol {
 	list-style-type: decimal;
 }
-
 ol ol {
 	list-style-type: lower-latin;
 }
-
 ol ol ol {
 	list-style-type: lower-roman;
 }
@@ -638,7 +638,7 @@ sup.endnote {
 	display:block;
 	margin: 20px 0px 20px 0px;
     page-break-inside: avoid;
-    border: 1px solid #333;
+	border: 2px solid #41650B;
     padding: 15px 15px 15px 15px;
 	float: left;
 	/*float: prince-top-if-necessary;*/
@@ -934,9 +934,20 @@ span.mpdf_toc_t_level_2 {	/* Title level 2 */
 span.mpdf_toc_p_level_2 {	/* Page no. level 2 - may be inside <a> */
 }
 
-/*************************
-	My Boxes
-**************************/
+
+/************************/
+/* MODIFICATION FOR UZH */
+/************************/
+
+body {
+  line-height: 2;
+  font-size: 13px;
+}
+
+p {
+	text-align: justify;
+	hyphens: auto;
+}
 
 .tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
 .tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6,
@@ -944,8 +955,10 @@ span.mpdf_toc_p_level_2 {	/* Page no. level 2 - may be inside <a> */
 .tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6,
 .tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6,
 .tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
-.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
-
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6 {
+	margin-top: -15px; /* moving box titles to the top of the boxes */
+    padding-top: 8px;
+	padding-bottom: 5px;
     margin-left: -15px;
     padding-left: 15px;
     margin-right: -15px;
@@ -953,14 +966,24 @@ span.mpdf_toc_p_level_2 {	/* Page no. level 2 - may be inside <a> */
     color: #ffffff;
 }
 
-.tbformel, .tbhowto{
-    background: #fbe0b4;
-    border-color: #f1b032;
+.tbformel {
+    background: #F2F2F2 !important;
+}
+
+.tbhowto {
+    background: #EDFBD9 !important;
 }
 
 .tbdefinition, .tbbeispiel{
-    background: #c7e4da;
-    border-color: #4eb79e;
+    background: #EDFBD9;
+    border-color: #41650B;
+}
+
+.tbverweis {
+    background: #EDFBD9;
+}
+.tbexkurs {
+    background: #F2F2F2 !important;
 }
 
 .tbfragen{
@@ -968,26 +991,24 @@ span.mpdf_toc_p_level_2 {	/* Page no. level 2 - may be inside <a> */
     border-color: #ea553c;
 }
 
-.tbexkurs, .tbverweis{
-    background: #dad8d9;
-    border-color: #a4a4a4;
-}
-
-.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
-.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6{
-    background: #f1b032;
-}
-
-.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
-.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6{
-    background: #4eb79e;
-}
-
 .tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6{
     background: #ea553c;
 }
 
+.tbhowto h1, .tbhowto h2, .tbhowto h3, .tbhowto h4, .tbhowto h5, .tbhowto h6{
+    background: #41650b;
+}
+
+.tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6 {
+    background: #41650b;
+}
+
+.tbdefinition h1, .tbdefinition h2, .tbdefinition h3, .tbdefinition h4, .tbdefinition h5, .tbdefinition h6,
+.tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6{
+    background: #41650B;
+}
+
 .tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
 .tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
-    background: #a4a4a4;
+    background: #41650b;
 }

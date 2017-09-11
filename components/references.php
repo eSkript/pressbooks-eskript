@@ -1,6 +1,16 @@
 <?php
 
 /**
+ * Use custom shortcode handler to also handle shortcodes within captions.
+ */
+add_action( 'eskript_overrides', function() {
+	add_filter( 'the_content', function( $content ) {
+		// NOTE: The ref shortcode was at one time called rev. This can be removed after all instances are replaced in the database.
+		return eskript_shortcode_handler( $content, array( 'ref', 'rev' ), 'escript_ref' );
+	}, 8 );
+} );
+
+/**
  * Reference shortcode.
  *
  * Options are documented at https://eskript.ethz.ch/lists/chapter/references/
@@ -9,11 +19,11 @@ add_shortcode( 'ref', 'escript_ref' );
 function escript_ref( $att, $content ) {
 	$ref_id = @$att['id'];
 	if ( $ref_id === null ) {
-		return '??';
+		return '';
 	}
 	$ref = eskript_reference_for_id( $ref_id );
 	if ( $ref === null ) {
-		return '??';
+		return '';
 	}
 	$o = (isset( $att['d'] )) ? str_split( $att['d'] ) : array();
 	$text = array();
@@ -274,10 +284,10 @@ function eskript_references_for_post( $post_id ) {
 function eskript_index_for_reference( $ref_id ) {
 	$ref = eskript_reference_for_id( $ref_id );
 	if ( $ref === null ) {
-		return '??';
+		return '';
 	}
 	if ( ! isset( $ref['index'] ) ) {
-		return '??';
+		return '';
 	}
 	$post_id = $ref['post'];
 	$index = $ref['index'];
@@ -298,23 +308,23 @@ function eskript_index_for_post( $post_id ) {
 		$n = 1;
 		foreach ( $book['front-matter'] as $post ) {
 			$can_read = eskript_can_read_post( $post );
-			$cache[ $post['ID'] ] = $can_read ? eskript_decimalToRoman( $n++ ) : '??';
+			$cache[ $post['ID'] ] = $can_read ? eskript_decimalToRoman( $n++ ) : '';
 		}
 		$n = 1;
 		foreach ( $book['part'] as $part ) {
 			foreach ( $part['chapters'] as $post ) {
 				$can_read = eskript_can_read_post( $post );
-				$cache[ $post['ID'] ] = $can_read ? strval( $n++ ) : '??';
+				$cache[ $post['ID'] ] = $can_read ? strval( $n++ ) : '';
 			}
 		}
 		$n = 1;
 		foreach ( $book['back-matter'] as $post ) {
 			$can_read = eskript_can_read_post( $post );
-			$cache[ $post['ID'] ] = $can_read ? eskript_numToAlpha( $n++ ) : '??';
+			$cache[ $post['ID'] ] = $can_read ? eskript_numToAlpha( $n++ ) : '';
 		}
 	}
 	if ( ! isset( $cache[ $post_id ] ) ) {
-		return '??';
+		return '';
 	}
 	return $cache[ $post_id ];
 }

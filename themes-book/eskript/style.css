@@ -8,6 +8,54 @@ Template: pressbooks-book
 
 @import url("../../../pressbooks/themes-book/fitzgerald/style.css");
 
+.book-info-container ul.table-of-content {
+	column-count: 1;
+}
+@media (min-device-width: 450px) { 
+	.book-info-container ul.table-of-content {
+		column-count: 2;
+	}
+}
+@media (min-device-width: 800px) { 
+	.book-info-container ul.table-of-content {
+		column-count: 3;
+	}
+}
+/*@media (min-device-width: 1200px) { 
+	.book-info-container ul.table-of-content {
+		column-count: 4;
+	}
+}*/
+
+.dashicons.dashicons-arrow-up, .dashicons.dashicons-arrow-down {
+	float: left !important;
+	margin-left: -25px;
+	margin-right: 5px;
+}
+
+.dashicons-arrow-up:before {
+    content: "\f139" !important;
+}
+
+#toc ul.front-matter {
+    border-bottom: 1px solid lightgrey !important;
+    padding-bottom: 15px !important;
+}
+
+#toc li > ul.back-matter {
+    margin-top: 25px;
+}
+
+#toc ul.back-matter {
+    border-top: 1px solid lightgrey !important;
+    padding-top: 15px !important;
+}
+
+#toc hr {
+	border: 0;
+    border-top: 1px solid lightgrey;
+}
+
 /* begin textbook additions */
 
 h1 + p,
@@ -18,6 +66,45 @@ h5 + p,
 h6 + p {
     margin-top: -5px;
     margin-bottom: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+h1 {
+	font-style: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    page-break-after: avoid;
+    hyphens: none;
+}
+
+h2 {
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    letter-spacing: normal;
+    word-spacing: normal;
+    page-break-after: avoid;
+    hyphens: none;
+    -webkit-hyphens: none;
+}
+
+img {
+    background: #f5f5f5;
+    border: 1px solid #eeeeee;
+    padding: 5px;
+    height: auto;
+    max-width: 98%;
+}
+
+img.latex {
+    vertical-align: middle;
+    border: none;
+    background: none;
 }
 
 ol.alphalist {
@@ -36,6 +123,18 @@ ol.alphalist li::before {
 
 small {
     font-size: 80%;
+}
+
+/* front page */
+.site-main a {
+    background: #E4E6E8;
+    border-radius: 2px;
+    color: #333;
+    display: inline;
+    font: 0.75em 'Oswald',sans-serif;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 /** tight and loose tracking **/
@@ -121,6 +220,33 @@ p.cc-block {
 
 #content table tr td, #content table tr th {
     border: 1px solid #e7e7e7;
+	padding: 1px;
+}
+
+.chapter_subtitle, .chapter_author {
+    margin: 0px;
+}
+.part-title {
+	float: right;
+}
+
+.chapter_subtitle + .chapter_author {
+    margin-top: 0px;
+}
+
+.entry-title {
+    font-size: 1.6em;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    margin: 30px 0 50px;
+    padding-top: 5px;
+    text-align: left;
+}
+
+.entry-title span {
+    display: block;
+    margin-bottom: 1.4em;
 }
 
 .entry-content{
@@ -230,12 +356,48 @@ span.small.odt {
     margin-left: 30px; }
 
 .entry-content ol{
-    margin-left:15px;
+    margin-left: 30px;
 }
 
 .entry-content ul {
     list-style: outside disc; }
 
+/* ol style */
+ol {
+	list-style-type: decimal;
+}
+
+ol ol {
+	list-style-type: lower-latin;
+}
+
+ol ol ol {
+	list-style-type: lower-roman;
+}
+
+ol ol ol ol {
+	list-style-type: lower-greek;
+}
+/*
+@media screen {
+	ol {
+		display: table;
+		counter-reset: olorder;
+	}
+
+	ol > li {
+		display: table-row;
+		padding: 5px;
+		margin-left: 5px;
+		counter-increment: olorder;
+	}
+
+	ol > li::before {
+		display: table-cell;
+		content: counter(olorder) ".";
+	}
+}
+	
 ol {
     list-style: none outside;
     counter-reset: level1; }
@@ -264,7 +426,7 @@ ol ol ol {
 ol li li li::before {
     list-style-position: outside;
     content: counter(level3, lower-roman) ". ";
-    counter-increment: level3; }
+    counter-increment: level3; }*/
 
 /*************************
 	Media queries
@@ -274,7 +436,7 @@ ol li li li::before {
         width: 720px;
     }
 
-    .nav {
+    .nav, .posts-navigation {
         width: 900px;
         margin-left: -450px;
     }
@@ -322,12 +484,15 @@ ol li li li::before {
 **************************/
 
 .textbox {
-    border: 1px solid #333;
     margin-bottom: 20px;
-    padding: 15px;
+    border: 1px solid #333;
+    padding: 15px 15px 15px 15px;
+}
+.textbox p:last-child {
+	margin-bottom: 0px;
 }
 .textbox h1 {
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .tbformel h1, .tbformel h2, .tbformel h3, .tbformel h4, .tbformel h5, .tbformel h6,
@@ -353,6 +518,11 @@ ol li li li::before {
 .tbdefinition, .tbbeispiel{
     background: #c7e4da;
     border-color: #4eb79e;
+}
+
+.tbbeispiel p:nth-child(1) {
+    height: 0px;
+    display: none;
 }
 
 .tbfragen{
@@ -400,6 +570,7 @@ ul.sections {
 
 #content table {
 	display: table;
+	border-collapse: collapse;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -409,5 +580,40 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   font-family: "Times New Roman", serif;
+}
+
+.aligncenter, div.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#wrap {
+    margin: 0 auto 0px;
+}
+
+sup {
+	vertical-align: super;
+}
+
+sub {
+	vertical-align: sub;
+}
+
+/* footnotes */
+sup.footnote {
+    font-size: 0.6em;
+    line-height: 16px;
+    vertical-align: super;
+    margin-left: 2px;
+}
+.footnotes li {
+    font-size: 0.8em;
+}
+
+.footnotes li:before {
+	font-size: 0.6em;
+    line-height: 16px;
+    vertical-align: super;
 }
 

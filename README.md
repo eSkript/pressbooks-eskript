@@ -6,10 +6,22 @@ This WordPress plugin extends the Pressbooks plugin with additional features use
 
 ### Custom LaTeX Handler
 
-* Allows using a custom LaTeX image producer by defining `ESCRIPT_LATEX_URL` in `wp-config.php`. This feature can also be used to serve SVG instead of PNG images.
-* Circumvents limitations of regular shortcodes by removing the existing LaTeX shortcode handlers and interpreting them as a `the_content` filter instead. This enables for example LaTeX within image captions, since regular shortcodes can't be within other shortcodes.
+Allows using a custom LaTeX image producer by defining `ESCRIPT_LATEX_URL` in `wp-config.php`. This feature can also be used to serve SVG instead of PNG images.
+
+Formulas are adjusted to the current text color by requesting new images with the right color when needed. (See `fixes.js`.)
 
 Implemented in `components/latex.php`.
+
+### Custom Shortcode Handlers
+
+Within the custom `eskript_overrides` action, existing shortcodes can be removed and replaced with `the_content` filters using the `eskript_shortcode_handler` helper function.
+
+* `eskript_overrides` will be called after all other plugins have been initialized, so `remove_shortcode` is not called before the shortcode to remove has been added.
+* Handling shortcodes within a custom `the_content` filter allows to support shortcodes within shortcodes (e.g. formulas inside captions).
+* `eskript_overrides` will not be called on `wp_loaded`, but also while exporting books, so the custom shorttags will still work.
+* Used for the `latex` and the `ref` shortcodes.
+
+Implemented in `components/helpers.php`.
 
 ### Download Latest Exports
 
