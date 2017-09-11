@@ -88,6 +88,24 @@ add_shortcode( 'geogebra', function ( $atts ) {
 	return $out;
 });
 /**
+ * Shortcode for including interactive GeoGebra content.
+ */
+add_shortcode( 'geogebra', function ( $atts ) {
+	$id = $atts['id'];
+	$conf = (object) $atts;
+	unset( $conf->id );
+	$json = json_encode( $conf );
+	$out = "<div id=\"$id\"></div>\n";
+	$out .= "<script>\n";
+	$out .= "window.addEventListener(\"load\", function() {\n";
+	$out .= "	let applet = new GGBApplet($json, true);\n";
+	$out .= "	applet.inject('$id');\n";
+	$out .= "});\n";
+	$out .= "</script>\n";
+	return $out;
+});
+
+/**
  * Add theme options.
  */
 add_action( 'admin_init', function() {

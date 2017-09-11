@@ -524,7 +524,7 @@ h2.chapter-subtitle + h2.chapter-author {
     text-align: right;
 }
 .aphorism cite::before {
-	content: "â€“";
+	content: "–";
 }
 
 
