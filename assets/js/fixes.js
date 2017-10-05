@@ -1,4 +1,4 @@
-var $ = jQuery;
+const $ = jQuery;
 
 /**
  * Adjust color of LaTeX formula according to the local text color.
@@ -27,5 +27,14 @@ $(document).ready(function() {
  */
 $(document).ready(function() {
   $('.log-wrap').prepend( '<a href="https://eskript.ethz.ch/">Home</a>' );
+    
 });
 
+
+//remove options button if empty
+$(window).load(function() {
+    var n = $('#user_settings').children().length;
+    if(n>1){
+        $('#user_settings').show();
+    }
+});

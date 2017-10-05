@@ -4,6 +4,7 @@
 
 /* copies content of eskript/style.css with overrides for MCE textbox CSS */
 
+
 .textbox {
     border: 1px solid #333;
     margin-bottom: 20px;

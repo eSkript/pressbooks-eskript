@@ -25,15 +25,20 @@ function eskript_content_filter( $content ) {
  * Add theme scripts.
  */
 add_action( 'wp_enqueue_scripts', function() {
+    wp_enqueue_script( 'eskript_fixes', ESCRIPT_PLUGIN_URL . 'assets/js/fixes.js', array( 'jquery' ) );
+    
 	$o = get_option( 'eskript_settings', array() );
 	// NOTE: Disabled subchapters (for now).
-	// if ( ! empty( $o['subchapterize'] ) ) {
-	// 	wp_enqueue_script( 'eskript_subchapters', ESCRIPT_PLUGIN_URL . 'assets/js/subchapters.js', array( 'jquery' ) );
-	// }
+	if ( ! empty( $o['subchapterize'] ) ) {
+		//test if user has it enabled
+		$escript_usersettings = get_user_meta(get_current_user_id(),'escript_subchapters',true);
+		if($escript_usersettings){
+			wp_enqueue_script( 'eskript_subchapters', ESCRIPT_PLUGIN_URL . 'assets/js/subchapters.js', array( 'jquery' ) );
+		}
+	}
 	if ( ! empty( $o['geogebra'] ) ) {
 		wp_enqueue_script( 'eskript_geogebra', 'https://cdn.geogebra.org/apps/deployggb.js' );
 	}
-	wp_enqueue_script( 'eskript_fixes', ESCRIPT_PLUGIN_URL . 'assets/js/fixes.js', array( 'jquery' ) );
 });
 /**
  * Limit selectable themes.
@@ -63,6 +68,23 @@ function eskript_option_pressbooks_theme_options_global( $value ) {
 	}
 	return $value;
 }
+/**
+ * custom post to save user settings
+ */
+add_action( 'admin_post_save_user_settings', 'escript_user_subchapter' );
+
+function escript_user_subchapter(){
+	if(get_user_meta(get_current_user_id(),'escript_subchapters',true)){
+		update_user_meta( get_current_user_id(), 'escript_subchapters', false);
+	}else{
+		update_user_meta( get_current_user_id(), 'escript_subchapters', true);
+	}
+	
+	if (isset($_SERVER["HTTP_REFERER"])) {
+		header("Location: " . $_SERVER["HTTP_REFERER"]);
+	}
+}
+
 /**
  * Shortcode to allow portable references of resources inside the upload directory. 
  */
@@ -115,7 +137,6 @@ add_action( 'admin_init', function() {
 		'eskript_settings_sanitizer' // input sanitizer
 	);
 	// NOTE: Disabled subchapters (for now).
-	/***
 	add_settings_field(
 		'subchapterize',
 		__( 'Chapter Subdivision', 'ethskript' ),
@@ -129,7 +150,7 @@ add_action( 'admin_init', function() {
 		'pressbooks_theme_options_global',
 		'global_options_section'
 	);
-	***/
+
 	add_settings_field(
 		'geogebra',
 		__( 'GeoGebra', 'ethskript' ),
