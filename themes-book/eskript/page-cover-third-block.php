@@ -17,6 +17,7 @@
 	<div id="user_settings" style="display:none;">
 		<h2>Options</h2>
 		<?php
+		if(is_user_logged_in()){
 			$o = get_option( 'eskript_settings', array() );
 			if ( ! empty( $o['subchapterize'] ) ) {
 				$escript_usersettings = get_user_meta(get_current_user_id(),'escript_subchapters',true);
@@ -30,8 +31,8 @@
 		  <input type="hidden" name="data" value="foobarid">
 		  <label><input type="checkbox" name="sections" onchange="document.getElementById(\'section_display\').submit()" '.$checked.'>put subchapters on their own page</label>
 		</form>';
-				
 			}
+		}
 		?>
 	</div>
 		
