@@ -23,7 +23,8 @@
 <?php
 
 $options = get_option( 'pressbooks_theme_options_global' );
-$levels = @$options['toc_levels'];
+$levels = 2; //always enable two level toc on subchapter page because the chapters wont be displayed else
+// $levels = @$options['toc_levels'];
 
 if ($levels > 1) {
 	$toc = eskript_post_toc(null, $levels);
