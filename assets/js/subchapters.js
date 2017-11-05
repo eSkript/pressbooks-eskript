@@ -1,5 +1,3 @@
-const $ = jQuery;
-
 const section_order = [];
 const section_map = {}; // map id to section id
 
@@ -38,6 +36,7 @@ $(document).ready(function() {
   window.addEventListener("hashchange", subchapterize, false);
 });
 
+
 function id_to_section_id(id) {
   if (section_map.hasOwnProperty(id)) {
     return section_map[id];
@@ -71,7 +70,7 @@ function subchapterize() {
   $('.entry-content').children().each(function(i) {
     const elem = $(this);
     const tag = elem.get(0).tagName;
-    if (tag == 'H1') {
+    if (tag == 'H1' && !elem.hasClass("not-in-list")) {
       const id = elem.attr('id');
       hide = id !== section_id;
     }

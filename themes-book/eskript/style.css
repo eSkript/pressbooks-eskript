@@ -617,3 +617,6 @@ sup.footnote {
     vertical-align: super;
 }
 
+iframe {
+    width: 100% !important;
+}
