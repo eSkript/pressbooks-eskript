@@ -323,6 +323,11 @@ img {
 	height: auto;
         max-width: 100%;
 }
+img.latex {
+    vertical-align: middle;
+    border: none;
+    background: none;
+}
 .alignleft {
 	float: left;
 	margin: 1em 1em 1em 0;
@@ -588,10 +593,11 @@ sup.footnote, sup.endnote {
 .tbbeispiel h1, .tbbeispiel h2, .tbbeispiel h3, .tbbeispiel h4, .tbbeispiel h5, .tbbeispiel h6,
 .tbfragen h1, .tbfragen h2, .tbfragen h3, .tbfragen h4, .tbfragen h5, .tbfragen h6,
 .tbexkurs h1, .tbexkurs h2, .tbexkurs h3, .tbexkurs h4, .tbexkurs h5, .tbexkurs h6,
-.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6{
-
-    margin-left: -15px;
-    padding-left: 15px;
+.tbverweis h1, .tbverweis h2, .tbverweis h3, .tbverweis h4, .tbverweis h5, .tbverweis h6 {
+    margin-left: -10px;
+    padding-left: 10px;
+    margin-right: -10px;
+    padding-right: 10px;
     color: #ffffff;
 }
 
