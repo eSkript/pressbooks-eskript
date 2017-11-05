@@ -45,6 +45,18 @@ function eskript_overrides() {
 	do_action( 'eskript_overrides' );
 }
 
+//show today's data if tag looks like [date today], otherwise pass original shortcode tag
+function todaysdate_shortcode( $atts, $content, $tag ){
+	if ($atts[0] == 'today')
+		return date('d.m.Y');
+	
+	$attrString = '';
+	foreach ($atts as $key => $value)
+        $attrString .= ' ' . $key . '="' . $value . '"';
+	return '[ '.$tag.' '.$attrString.']';
+}
+add_shortcode( 'date', 'todaysdate_shortcode' );
+
 //add_action( 'init', 'eskript_mcebuttons' );
 function eskript_mcebuttons() {
     add_filter( "mce_external_plugins", "eskript_add_buttons" );
