@@ -59,6 +59,7 @@ function pbr_latest_exports() {
 
 	// group by extension, sort by date newest first 
 	foreach ( \Pressbooks\Utility\scandir_by_date( $dir ) as $file ) {
+		$file = utf8_encode($file);
 		// only interested in the part of filename starting with the timestamp
 		preg_match( '/-\d{10,11}(.*)/', $file, $matches );
 		// grab the first captured parenthisized subpattern
