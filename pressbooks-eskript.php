@@ -3,10 +3,11 @@
 Plugin Name: Pressbooks eskript
 Plugin URI: http://eskript.ethz.ch
 Description: ETH eskript additions for Pressbooks
-Version: 0.0.1
-Author: Stephan Müller
-Author URI: http://heap.ch
-License: GPLv2
+Version: 0.1
+Author: Lukas Kaiser, Stephan Müller et al.
+Copyright: © 2017, ETH Zurich, D-HEST, Stephan J. Müller, Lukas Kaiser, Dominic Michel, Lorin Mühlebach
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -44,6 +45,18 @@ function eskript_overrides() {
 	// NOTE: Might be triggered more than once.
 	do_action( 'eskript_overrides' );
 }
+
+//show today's data if tag looks like [date today], otherwise pass original shortcode tag
+function todaysdate_shortcode( $atts, $content, $tag ){
+	if ($atts[0] == 'today')
+		return date('d.m.Y');
+	
+	$attrString = '';
+	foreach ($atts as $key => $value)
+        $attrString .= ' ' . $key . '="' . $value . '"';
+	return '[ '.$tag.' '.$attrString.']';
+}
+add_shortcode( 'date', 'todaysdate_shortcode' );
 
 //add_action( 'init', 'eskript_mcebuttons' );
 function eskript_mcebuttons() {

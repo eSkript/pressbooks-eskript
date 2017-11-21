@@ -17,21 +17,23 @@
 	<div id="user_settings" style="display:none;">
 		<h2>Options</h2>
 		<?php
-			$o = get_option( 'eskript_settings', array() );
-			if ( ! empty( $o['subchapterize'] ) ) {
-				$escript_usersettings = get_user_meta(get_current_user_id(),'escript_subchapters',true);
-				$checked = "";
-				if($escript_usersettings){
-					$checked = "checked";
-				}
-			
-				echo '<form id="section_display" action="'.admin_url( 'admin-post.php' ).'" method="post">
-		  <input type="hidden" name="action" value="save_user_settings">
-		  <input type="hidden" name="data" value="foobarid">
-		  <label><input type="checkbox" name="sections" onchange="document.getElementById(\'section_display\').submit()" '.$checked.'>put subchapters on their own page</label>
-		</form>';
-				
-			}
+            if(is_user_logged_in()){
+                $o = get_option( 'eskript_settings', array() );
+                if ( ! empty( $o['subchapterize'] ) ) {
+                    $escript_usersettings = get_user_meta(get_current_user_id(),'escript_subchapters',true);
+                    $checked = "";
+                    if($escript_usersettings){
+                        $checked = "checked";
+                    }
+
+                    echo '<form id="section_display" action="'.admin_url( 'admin-post.php' ).'" method="post">
+              <input type="hidden" name="action" value="save_user_settings">
+              <input type="hidden" name="data" value="foobarid">
+              <label><input type="checkbox" name="sections" onchange="document.getElementById(\'section_display\').submit()" '.$checked.'>put subchapters on their own page</label>
+            </form>';
+
+                }
+            }
 		?>
 	</div>
 		
