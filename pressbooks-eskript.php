@@ -3,10 +3,11 @@
 Plugin Name: Pressbooks eskript
 Plugin URI: http://eskript.ethz.ch
 Description: ETH eskript additions for Pressbooks
-Version: 0.0.1
-Author: Stephan Müller
-Author URI: http://heap.ch
-License: GPLv2
+Version: 0.1
+Author: Lukas Kaiser, Stephan Müller et al.
+Copyright: © 2017, ETH Zurich, D-HEST, Stephan J. Müller, Lukas Kaiser, Dominic Michel, Lorin Mühlebach
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
