@@ -3,10 +3,11 @@
 Plugin Name: Pressbooks eskript
 Plugin URI: http://eskript.ethz.ch
 Description: ETH eskript additions for Pressbooks
-Version: 0.0.1
-Author: Stephan Müller
-Author URI: http://heap.ch
-License: GPLv2
+Version: 0.1
+Author: Lukas Kaiser, Stephan Müller et al.
+Copyright: © 2017, ETH Zurich, D-HEST, Stephan J. Müller, Lukas Kaiser, Dominic Michel, Lorin Mühlebach
+License: GPL-2.0+
+License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -56,23 +57,6 @@ function todaysdate_shortcode( $atts, $content, $tag ){
 	return '[ '.$tag.' '.$attrString.']';
 }
 add_shortcode( 'date', 'todaysdate_shortcode' );
-
-//add_action( 'init', 'eskript_mcebuttons' );
-function eskript_mcebuttons() {
-    add_filter( "mce_external_plugins", "eskript_add_buttons" );
-    add_filter( 'mce_buttons_3', 'eskript_register_buttons' );
-	wp_register_style( 'eskript-mce-buttons', plugin_dir_url( __FILE__ ) . 'assets/css/eskript-mce-buttons.css' );
-    wp_enqueue_style( 'eskript-mce-buttons' );
-}
-function eskript_add_buttons( $plugin_array ) {
-    $plugin_array['pbeskript'] = plugin_dir_url( __FILE__ ) . 'assets/js/eskript-mce-buttons.js';
-    return $plugin_array;
-}
-function eskript_register_buttons( $buttons ) {
-    array_push( $buttons, 'toggleinlist', 'code' ); 
-    return $buttons;
-}
-
 
 /**
  * Remove references to pressbooks.com..
