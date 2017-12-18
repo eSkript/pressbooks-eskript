@@ -29,3 +29,13 @@ ORIGINAL CODE:
     $filename = array_shift( $filename );
     $filename = sanitize_file_name( urldecode( $filename ) );
     $filename = Sanitize\force_ascii( $filename );
+    
+***
+
+pressbooks\includes\modules\export\epub\class-pb-epub201.php:
+Replace lines 1815 in function 'fetchAndSaveUniqueImage' with:
+
+    if ( $this->compressImages && 'image/svg+xml' != mime_content_type($tmp_file)) {
+    
+ORIGINAL CODE:
+    if ( $this->compressImages ) {
