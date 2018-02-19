@@ -491,7 +491,7 @@ ol li li li::before {
 .textbox p:last-child {
 	margin-bottom: 0px;
 }
-.textbox h1 {
+.textbox h1, .textbox h2, .textbox h3, .textbox h4, .textbox h5, .textbox h6,  {
     margin-top: 0px;
 }
 
@@ -619,4 +619,9 @@ sup.footnote {
 
 iframe {
     width: 100% !important;
+}
+
+p.wp-caption-text {
+	font-size: small;
+	text-align: left;
 }
