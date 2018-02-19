@@ -58,23 +58,6 @@ function todaysdate_shortcode( $atts, $content, $tag ){
 }
 add_shortcode( 'date', 'todaysdate_shortcode' );
 
-//add_action( 'init', 'eskript_mcebuttons' );
-function eskript_mcebuttons() {
-    add_filter( "mce_external_plugins", "eskript_add_buttons" );
-    add_filter( 'mce_buttons_3', 'eskript_register_buttons' );
-	wp_register_style( 'eskript-mce-buttons', plugin_dir_url( __FILE__ ) . 'assets/css/eskript-mce-buttons.css' );
-    wp_enqueue_style( 'eskript-mce-buttons' );
-}
-function eskript_add_buttons( $plugin_array ) {
-    $plugin_array['pbeskript'] = plugin_dir_url( __FILE__ ) . 'assets/js/eskript-mce-buttons.js';
-    return $plugin_array;
-}
-function eskript_register_buttons( $buttons ) {
-    array_push( $buttons, 'toggleinlist', 'code' ); 
-    return $buttons;
-}
-
-
 /**
  * Remove references to pressbooks.com..
  */
