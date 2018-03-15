@@ -1,0 +1,159 @@
+/*
+Theme Name: MATH
+Description: Style for D-MATH eskript platform
+Author: Carina Heiss
+Version: 0.1
+Template: pressbooks-book
+*/
+
+@import url("../eskript/style.css");
+
+
+/* Color-Boxen */
+.lemma h1, .lemma h2, .lemma h3, .lemma h4, .lemma h5, .lemma h6, .beispiel h2, .beispiel h3, .beispiel h4, .beispiel h5, .beispiel h6, .definition h1, .definition h2, .definition h3, .definition h4, .definition h5, .definition h6, .theorem h1, .theorem h2, .theorem h3, .theorem h4, .theorem h5, .theorem h6, .bemerkung h1, .bemerkung h2, .bemerkung h3, .bemerkung h4, .bemerkung h5, .bemerkung h6, .uebung h1, .uebung h2, .uebung h3, .uebung h4, .uebung h5, .uebung h6{
+    margin-left: -15px;
+    padding-left: 15px;
+    margin-right: -15px;
+    padding-right: 15px;
+    color: #ffffff;
+}
+
+.lemma, .beispiel{
+    background: #c7e4da;
+    border-color: #4eb79e;
+}
+
+.lemma h1, .lemma h2, .lemma h3, .lemma h4, .lemma h5, .lemma h6, .beispiel h1, .beispiel h2, .beispiel h3, .beispiel h4, .beispiel h5, .beispiel h6
+{
+    background: #4eb79e;
+}
+
+.definition{
+    background: #fbe0b4;
+    border-color: #f1b032;
+}
+
+.definition h1, .definition h2, .definition h3, .definition h4, .definition h5, .definition h6{
+    background: #f1b032;
+}
+
+.theorem{
+    background-color:#BADBFD;
+    border-color:#0066CC;
+}
+
+.theorem h1, .theorem h2, .theorem h3, .theorem h4, .theorem h5, .theorem h6
+{
+    background: #66B2FF;
+}
+
+.bemerkung, .uebung
+{
+    background: #dad8d9;
+    border-color: #a4a4a4;
+}
+.bemerkung h1, .bemerkung h2, .bemerkung h3, .bemerkung h4, .bemerkung h5, .bemerkung h6, .uebung h1, .uebung h2, .uebung h3, .uebung h4, .uebung h5, .uebung h6
+{
+    background: #a4a4a4;
+}
+
+/* details-tags */
+.wieso summary {
+  display: inline-block;
+}
+
+.wieso summary::-webkit-details-marker {
+  display: none;
+}
+
+.wieso summary ::before {
+  content: '';
+}
+
+.wieso[open] > summary::before {
+  content: '';
+}
+
+details {
+    display: inline;
+}
+
+.fussnote {
+    display: inline;
+}
+
+.fussnote summary {
+  display: inline;
+}
+
+.fussnote summary::-webkit-details-marker {
+  display: none;
+}
+
+.fussnote summary ::before {
+  content: '';
+}
+
+.fussnote[open] > summary::before {
+  content: '';
+}
+/* neue Nummerierungen*/
+ol li {
+    list-style: none;
+    position: relative;
+}
+
+ol.numuebung {
+    counter-reset: roman;
+}
+ol.numfolgerungen {
+    counter-reset: alpha
+}
+
+ol.numfolgerungen4 {
+    counter-reset: alpha 4;
+}
+ol.numerate {
+    counter-reset: decimal;
+}
+ol.numerate5 {
+    counter-reset: decimal 4;
+}
+ol.numerate9 {
+    counter-reset: decimal 8;
+}
+ol.numbemerkung {
+    counter-reset: decimal;
+}
+
+
+ol.numuebung > li:before {
+    counter-increment: roman;
+    content:"(" counter(roman, lower-roman)") "
+}
+ol.numfolgerungen > li:before {
+    counter-increment: alpha;
+    content:"(" counter(alpha, lower-alpha)") "
+}
+
+ol.numfolgerungen4 > li:before {
+    counter-increment: alpha;
+    content:"(" counter(alpha, lower-alpha)") "
+}
+
+ol.numerate > li:before {
+    counter-increment: decimal;
+    content:"(" counter(decimal, decimal)") "
+}
+ol.numerate5 > li:before {
+    counter-increment: decimal;
+    content:"(" counter(decimal, decimal)") "
+}
+ol.numerate9 > li:before {
+    counter-increment: decimal;
+    content:"(" counter(decimal, decimal)") "
+}
+ol.numbemerkung > li:before {
+    counter-increment: decimal;
+    content:"(" counter(decimal, decimal)"') "
+}
