@@ -49,6 +49,7 @@ function eskript_add_themes( $themes ) {
 		$themes = array(); // remove all other themes
 		$themes['eskript'] = 1;
 		$themes['uzh'] = 1;
+		$themes['math'] = 1;
 	}
 	return $themes;
 }
