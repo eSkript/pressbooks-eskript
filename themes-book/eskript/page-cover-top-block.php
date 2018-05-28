@@ -22,7 +22,7 @@
 				<!-- Book Title -->
 				<h1 class="entry-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 
-				<?php if ( ! empty( do_shortcode( '[version/]' ) ) ): ?>
+				<?php if ( shortcode_exists( 'version' ) && ! empty( do_shortcode( '[version/]' ) ) ): ?>
 					<?php $revisions_url = esc_url(add_query_arg( array('revisions' => true,), home_url('/') )); ?>
 					<p class="book-version book-author"><a href="<?php echo $revisions_url; ?>" title="Revisions"><?= do_shortcode( '[version/]' );?> / <?= do_shortcode( '[publish-date/]' );?></a></p>
 		     	<?php endif; ?>
