@@ -6,7 +6,7 @@ Version: 0.1
 Template: pressbooks-book
 */
 
-@import url("../../../pressbooks/themes-book/fitzgerald/style.css");
+@import url(“../../../../themes/pressbooks-fitzgerald/style.css”);
 
 .book-info-container ul.table-of-content {
 	column-count: 1;
