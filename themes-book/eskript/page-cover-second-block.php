@@ -37,104 +37,43 @@
 											endwhile; ?>
 
 <?php
+				 /**
+					* @author Brad Payne <brad@bradpayne.ca>
+					* @copyright 2014 Brad Payne
+					* @since 3.8.0
+					*/
 
-function pbr_latest_exports() {
-	$suffix = array(
-	    '._3.epub',
-	    '.epub',
-	    '.pdf',
-	    '.mobi',
-	    '.hpub',
-	    '.icml',
-	    '.html',
-	    '.xml',
-	    '._vanilla.xml',
-	    '._oss.pdf',
-	    '.odt',
-	);
+					$files = \Pressbooks\Utility\latest_exports();
+					$site_option = get_site_option( 'pressbooks_sharingandprivacy_options', array( 'allow_redistribution' => 0 ) );
+					$option = get_option( 'pbt_redistribute_settings', array( 'latest_files_public' => 0 ) );
+					if ( ! empty( $files ) && ( true == $site_option['allow_redistribution'] ) && ( true == $option['latest_files_public'] ) ) { ?>
+						<div class="alt-formats">
+							<h4><?php _e( 'Download in the following formats:', 'pressbooks' ); ?></h4>
+							<?php foreach ( $files as $filetype => $filename ) :
+								$filename = preg_replace( '/(-\d{10})(.*)/ui', "$1", $filename );
 
-	$dir = \Pressbooks\Modules\Export\Export::getExportFolder();
+								// Rewrite rule
+								$url = home_url( "/open/download?type={$filetype}" );
 
-	$files = array();
-
-	// group by extension, sort by date newest first 
-	foreach ( \Pressbooks\Utility\scandir_by_date( $dir ) as $file ) {
-		$file = utf8_encode($file);
-		// only interested in the part of filename starting with the timestamp
-		preg_match( '/-\d{10,11}(.*)/', $file, $matches );
-		// grab the first captured parenthisized subpattern
-		$ext = $matches[1];
-		$files[$ext][] = $file;
-	}
-
-	// get only one of the latest of each type
-	$latest = array();
-
-	foreach ( $suffix as $value ) {
-		if ( array_key_exists( $value, $files ) ) {
-			$latest[$value] = $files[$value][0];
-		}
-	}
-	
-	if (isset($latest['._oss.pdf'])) unset($latest['.pdf']);
-	// @TODO filter these results against user prefs
-
-	return $latest;
-}
-
-$files = pbr_latest_exports();
-$options = get_option( 'pbt_redistribute_settings' );
-// $options['latest_files_public'] = true; // for debugging 
-if ( ! empty( $files ) && ( true == $options['latest_files_public'] ) ) {
-	echo '<div class="alt-formats" style="clear: both;">';
-	echo '<h4>Download in the following formats:</h4>';
-	
-	$dir = \Pressbooks\Modules\Export\Export::getExportFolder();
-	foreach ( $files as $ext => $filename ) {
-		$file_extension = substr( strrchr( $ext, '.' ), 1 );
-
-		switch ( $file_extension ) {
-			case 'html':
-				$file_class = 'xhtml';
-				break;
-			case 'xml':
-				$pre_suffix = strcmp( $ext, '._vanilla.xml' );
-				$file_class = ( 0 === $pre_suffix) ? 'vanillawxr' : 'wxr';
-				break;
-			case 'epub':
-				$pre_suffix = strcmp( $ext, '._3.epub' );
-				$file_class = ( 0 === $pre_suffix ) ? 'epub3' : 'epub';
-				break;
-			case 'pdf':
-				$pre_suffix = strcmp( $ext, '._oss.pdf' );
-				$file_class = ( 0 === $pre_suffix ) ? 'mpdf' : 'pdf';
-				break;
-			default:
-				$file_class = $file_extension;
-				break;
-		}
-
-		$filename = preg_replace( '/(-\d{10})(.*)/ui', "$1", $filename );
-		// rewrite rule
-		$url = "open/download?filename={$filename}&type={$file_class}";
-		// for Google Analytics (classic), change to: 
-		// $tracking = "_gaq.push(['_trackEvent','exportFiles','Downloads','{$file_class}']);";
-		// for Google Analytics (universal), change to:
-		// $tracking = "ga('send','event','exportFiles','Downloads','{$file_class}');";
-		// Piwik Analytics event tracking _paq.push('trackEvent', category, action, name)
-		$tracking = "_paq.push(['trackEvent','exportFiles','Downloads','{$file_class}']);";
-
-		echo '<link itemprop="bookFormat" href="http://schema.org/EBook">'
-		. '<a rel="nofollow" onclick="' . $tracking . '" itemprop="offers" itemscope itemtype="http://schema.org/Offer" href="' . $url . '">'
-		. '<span class="export-file-icon small ' . $file_class . '" title="' . esc_attr( $filename ) . '"></span>'
-		. '<meta itemprop="price" content="$0.00"><link itemprop="availability" href="http://schema.org/InStock"></a>';
-	}
-	// end .alt-formats
-	echo "</div>";
-}
-
-?>
-
-								</div>
-					</div><!-- end .secondary-block -->
+								// Tracking event defaults to Google Analytics (Universal).
+								// Filter like so (for Piwik):
+								// add_filter('pressbooks_download_tracking_code', function( $tracking, $filetype ) {
+								//  return "_paq.push(['trackEvent','exportFiles','Downloads','{$filetype}']);";
+								// }, 10, 2);
+								// Or for Google Analytics (Classic):
+								// add_filter('pressbooks_download_tracking_code', function( $tracking, $filetype ) {
+								//  return "_gaq.push(['_trackEvent','exportFiles','Downloads','{$file_class}']);";
+								// }, 10, 2);
+								$tracking = apply_filters( 'pressbooks_download_tracking_code', "ga('send','event','exportFiles','Downloads','{$filetype}');", $filetype );
+							?>
+								<link itemprop="bookFormat" href="http://schema.org/EBook">
+									<a rel="nofollow" onclick="<?= $tracking; ?>" itemprop="offers" itemscope itemtype="http://schema.org/Offer" href="<?= $url; ?>">
+										<span class="export-file-icon small <?= $filetype; ?>" title="<?= esc_attr( $filename ); ?>"></span>
+										<meta itemprop="price" content="$0.00">
+										<link itemprop="availability" href="http://schema.org/InStock">
+									</a>
+							<?php endforeach; ?>
+						</div>
+					<?php }
+				?>
 				</section> <!-- end .secondary-block -->
