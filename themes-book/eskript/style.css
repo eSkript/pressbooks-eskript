@@ -8,6 +8,10 @@ Template: pressbooks-book
 
 @import url(“../../../../themes/pressbooks-fitzgerald/style.css”);
 
+.wrapper {
+    margin: 0 0;
+}
+
 .book-info-container ul.table-of-content {
 	column-count: 1;
 }
