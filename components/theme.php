@@ -25,6 +25,8 @@ function eskript_content_filter( $content ) {
  * Add theme scripts.
  */
 add_action( 'wp_enqueue_scripts', function() {
+	wp_dequeue_script( 'columnizer' );
+	wp_dequeue_script( 'columnizer-load' );
     wp_enqueue_script( 'eskript_fixes', ESCRIPT_PLUGIN_URL . 'assets/js/fixes.js', array( 'jquery' ) );
     
 	$o = get_option( 'eskript_settings', array() );
@@ -39,7 +41,7 @@ add_action( 'wp_enqueue_scripts', function() {
 	if ( ! empty( $o['geogebra'] ) ) {
 		wp_enqueue_script( 'eskript_geogebra', 'https://cdn.geogebra.org/apps/deployggb.js' );
 	}
-});
+}, 11);
 /**
  * Limit selectable themes.
  */
