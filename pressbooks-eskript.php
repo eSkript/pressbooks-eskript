@@ -27,7 +27,6 @@ define( 'ESCRIPT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once( 'components/helpers.php' );
 require_once( 'components/legacy.php' );
-require_once( 'components/latex.php' );
 require_once( 'components/references.php' );
 require_once( 'components/theme.php' );
 require_once( 'components/toc.php' );
